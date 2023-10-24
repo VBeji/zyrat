@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Sidebar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .toggle-button {
+      display: none;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .sidebar li a:hover {
+      background-color: #666;
+    }
+
+    .sidebar .sub-menu {
+      padding-left: 20px;
+      display: none;
+    }
+    
+    .sidebar .sub-menu li {
+      margin-bottom: 5px;
+    }
+    
+    .sidebar.open .sub-menu {
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      
+      .toggle-button {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        line-height: 30px;
+      }
+
+      .sidebar ul {
+        display: none;
+      }
+
+      .sidebar.open ul {
+        display: block;
+      }
+
+      .sidebar.open .toggle-button:before {
+        content: "\f00d";
+        font-family: "Font Awesome 5 Free";
+      }
+      
+      .sidebar .sub-menu {
+        padding-left: 0;
+        display: block;
+      }
+    }
+
+    /* Added styles for avatar */
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="sidebar">
+    <!-- Added avatar element -->
+    <div class="avatar">
+      <img src="../assets/images/frontend/banner/robot-trade-modified (2).png" alt="Avatar">
+    </div>
+    
+    <button class="toggle-button" onclick="toggleSidebar()">&#9776;</button>
+    
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Withdrawal</a></li>
+      <li><a href="#">Deposit</a></li>
+      <li><a href="#">Settings</a>
+        <ul class="sub-menu">
+          <li><a href="#">Profiles</a></li>
+          <li><a href="#">Wallets</a></li>
+          <li><a href="#">Transactions</a></li>
+          <li><a href="#">Change Password</a></li>
+        </ul>
+      </li>
+      <li><a href="#">My Account</a></li>
+    </ul>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('open');
+    }
+    
+    var subMenus = document.querySelectorAll('.sidebar li');
+    for (var i = 0; i < subMenus.length; i++) {
+      subMenus[i].addEventListener('click', function(e) {
+        if (e.target.nextElementSibling !== null && e.target.nextElementSibling.classList.contains('sub-menu')) {
+          e.preventDefault();
+          e.target.nextElementSibling.classList.toggle('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Sidebar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .toggle-button {
+      display: none;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .sidebar li a:hover {
+      background-color: #666;
+    }
+
+    .sidebar .sub-menu {
+      padding-left: 20px;
+      display: none;
+    }
+    
+    .sidebar .sub-menu li {
+      margin-bottom: 5px;
+    }
+    
+    .sidebar.open .sub-menu {
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      
+      .toggle-button {
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background-color: #c21d1d;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        /* position: absolute; */
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        line-height: 30px;
+      }
+
+      .sidebar ul {
+        display: none;
+      }
+
+      .sidebar.open ul {
+        display: block;
+      }
+
+      .sidebar.open .toggle-button:before {
+        content: "\f00d";
+        font-family: "Font Awesome 5 Free";
+      }
+      
+      .sidebar .sub-menu {
+        padding-left: 0;
+        display: block;
+      }
+    }
+  </style>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="sidebar">
+    <button ">&#9776;helloe</button>
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Withdrawal</a></li>
+      <li><a href="#">Deposit</a></li>
+      <li ><a class="toggle-button" onclick="toggleSidebar()" href="#">Settings</a>
+        <ul class="sub-menu">
+          <li><a href="#">Profiles</a></li>
+          <li><a href="#">Wallets</a></li>
+          <li><a href="#">Transactions</a></li>
+          <li><a href="#">Change Password</a></li>
+        </ul>
+      </li>
+      <li><a href="#">My Account</a></li>
+    </ul>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('open');
+    }
+    
+    var subMenus = document.querySelectorAll('.sidebar li');
+    for (var i = 0; i < subMenus.length; i++) {
+      subMenus[i].addEventListener('click', function(e) {
+        if (e.target.nextElementSibling !== null && e.target.nextElementSibling.classList.contains('sub-menu')) {
+          e.preventDefault();
+          e.target.nextElementSibling.classList.toggle('open');
+        }
+      });
+    }
+  </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Sidebar</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+    }
+
+    .toggle-button {
+      display: none;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .sidebar li a:hover {
+      background-color: #666;
+    }
+
+    .sub-menu {
+      padding-left: 20px;
+    }
+    
+    .sub-menu li {
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      
+      .toggle-button {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        text-align: center;
+        line-height: 30px;
+      }
+
+      .sidebar ul {
+        display: none;
+      }
+
+      .sidebar.open ul {
+        display: block;
+      }
+
+      .sidebar.open .toggle-button:before {
+        content: "\f00d";
+        font-family: "Font Awesome 5 Free";
+      }
+    }
+  </style>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="sidebar">
+    <button class="toggle-button" onclick="toggleSidebar()">&#9776;</button>
+    <ul>
+      <li><a href="#">Dashboard</a></li>
+      <li><a href="#">Withdrawal</a></li>
+      <li><a href="#">Deposit</a></li>
+      <li><a href="#">Settings</a>
+        <ul class="sub-menu">
+          <li><a href="#">Profiles</a></li>
+          <li><a href="#">Wallets</a></li>
+          <li><a href="#">Transactions</a></li>
+          <li><a href="#">Change Password</a></li>
+        </ul>
+      </li>
+      <li><a href="#">My Account</a></li>
+    </ul>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      var sidebar = document.querySelector('.sidebar');
+      sidebar.classList.toggle('open');
+    }
+  </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <style>
+    /* Default styles */
+    .dashboard {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .user-profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    
+    .settings a {
+      color: #333;
+      font-size: 24px;
+      text-decoration: none;
+    }
+    
+    .wallet {
+      position: relative;
+    }
+    
+    .balance {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    
+    .balance span:first-child {
+      margin-right: 10px;
+      font-weight: bold;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .dashboard {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .settings {
+        margin-top: 10px;
+      }
+      
+      .balance {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .balance span:first-child {
+        margin-bottom: 5px;
+      }
+    }
+  </style>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  <div class="dashboard">
+    <div class="user-profile">
+      <img src="profile-picture.jpg" alt="Profile Picture">
+    </div>
+    <div class="settings">
+      <a href="#"><i class="fas fa-cog"></i></a>
+    </div>
+    <div class="wallet">
+      <div class="balance" onclick="toggleBalance()">
+        <span><i class="fas fa-wallet"></i> Wallet Balance:</span>
+        <span id="balance-value">1000 USD</span>
+        <i id="hide-balance-icon" class="fas fa-eye-slash"></i>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleBalance() {
+      var element = document.getElementById("balance-value");
+      var icon = document.getElementById("hide-balance-icon");
+      if (element.style.display === "none") {
+        element.style.display = "inline";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        element.style.display = "none";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    }
+  </script>
+</body>
+</html> -->
